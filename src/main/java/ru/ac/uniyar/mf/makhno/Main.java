@@ -117,17 +117,25 @@ public class Main {
                 }
                 break;
             case 2:
+                int num_4 = 1;
+                int num2 = 1;
                 String frac = in.next();
                 String[] parts = frac.split("/");
                 int num1 = Integer.parseInt(parts[0]);
-                int num2 = Integer.parseInt(parts[1]);
-                fraction frac_1 = new fraction(num1, num2);
+                fraction frac_1 = new fraction(num1);
+                if (parts.length == 2) {
+                    num2 = Integer.parseInt(parts[1]);
+                    frac_1.set_denominator(num2);
+                }
                 String symb3 = in.next();
                 String frac2 = in.next();
                 String[] parts2 = frac2.split("/");
                 int num_3 = Integer.parseInt(parts2[0]);
-                int num_4 = Integer.parseInt(parts2[1]);
-                fraction frac_2 = new fraction(num_3, num_4);
+                fraction frac_2 = new fraction(num_3);
+                if (parts2.length == 2) {
+                    num_4 = Integer.parseInt(parts2[1]);
+                    frac_2.set_denominator(num_4);
+                }
                 if (num_4 == 0 || num2 == 0){
                     System.out.println("Нет решений");
                     return;
