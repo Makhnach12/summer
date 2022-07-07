@@ -19,7 +19,7 @@ public class CalculatorTest {
     @Test
     void division(){
         String actual = Main.calculate(1,"1", "/", "0");
-        assertEquals("0", actual);
+        assertEquals("Деление на 0", actual);
     }
 
     @Test
@@ -27,4 +27,11 @@ public class CalculatorTest {
         String actual = Main.calculate(2,"1/2", "+", "1/2");
         assertEquals("1/1", actual);
     }
+
+    @Test
+    void frac_div_0(){
+        String actual = Main.calculate(2,"1/0", "+", "1/2");
+        assertEquals("Нет решений", actual);
+    }
+
 }
