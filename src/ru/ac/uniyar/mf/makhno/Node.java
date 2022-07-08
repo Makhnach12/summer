@@ -1,30 +1,38 @@
 package ru.ac.uniyar.mf.makhno;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Node {
-    private String id;
-    private String name;
-    private ArrayList<Node> children;
+    public String id;
+    public String name;
+    public List<Node> children;
 
-    public Node(){
-        this.id = "";
-        this.name = "";
-        this.children = new ArrayList<>();
-    }
-
-    public Node(String name) {
+    public Node(String node_name) {
         this.id = UUID.randomUUID().toString();
-        this.name = name;
+        this.name = node_name;
         this.children = new ArrayList<>();
     }
 
-    public String getId(){
-        return id;
+    public List<Node> getChildren() {
+        return children;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
+    }
+
+    public void add(Node _child) {
+        children.add(_child);
+    }
+
+    public void deleteNode(String ident){
+        int idx = -1;
+        for (int i = 0; i<children.size(); i++)
+            if (children.get(i).id == ident)
+                idx = i;
+        if (idx != -1)
+            children.remove(idx);
     }
 }
