@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Test;
 import ru.ac.uniyar.mf.makhno.Node;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,4 +51,19 @@ public class TreeTest {
         String expected = "Корень\n\tЛист1\n";
         assertEquals(expected, actual);
     }
+
+    @Test
+    void write_tree_to_file() throws IOException {
+        Node root1 = new Node("Корень");
+        Node child1 = new Node("Лист1");
+        root1.add(child1);
+        String actual = root1.toString();
+        String path = "/home/user/Рабочий стол/gg/yy.txt";
+        Files.write(Paths.get(path), actual.getBytes());
+        byte[] bytes = Files.readAllBytes(Paths.get(path));
+        String expected = new String (bytes);
+        assertEquals(expected, actual);
+    }
 }
+
+//home/user/Рабочий стол/gg/yy.txt
