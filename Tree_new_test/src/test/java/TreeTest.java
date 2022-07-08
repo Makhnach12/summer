@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.Test;
 import ru.ac.uniyar.mf.makhno.Node;
 
@@ -63,6 +66,33 @@ public class TreeTest {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
         String expected = new String (bytes);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void print2Json() throws JsonProcessingException {
+        Node root = new Node("Корень");
+        Node child = new Node("Лист");
+        root.add(child);
+        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        String actual = objectMapper.writeValueAsString(root);
+        System.out.println(actual);
+    }
+
+    @Test
+    void readFromJson() throws JsonProcessingException {
+        String jsonString = "{\n" +
+                " \"name\" : \"Корень\", \n" +
+                " \"children\" : [ {\n" +
+                "   \"name\" : \"Лист\", \n" +
+                "   \"children\" : [ ]\n" +
+                " } ]\n" +
+                "}";
+        ;
+        ObjectMapper objectMapper = new ObjectMapper();
+        Node actual = objectMapper.readValue(jsonString, Node.class);
+        assertEquals("Корень", actual.getName());
+        assertEquals(1, actual.getChildren().size());
+        assertEquals("Лист", actual.getChildren().get(0).getName());
     }
 }
 

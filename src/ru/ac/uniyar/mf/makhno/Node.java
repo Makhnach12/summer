@@ -9,6 +9,8 @@ public class Node {
     public String name;
     public List<Node> children;
 
+    public Node(){;}
+
     public Node(String node_name) {
         this.id = UUID.randomUUID().toString();
         this.name = node_name;
