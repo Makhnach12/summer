@@ -10,7 +10,7 @@ public class Node {
 
     public Node(){
         this.id = "";
-        this.name = "//";
+        this.name = "";
         this.children = new ArrayList<>();
     }
 
