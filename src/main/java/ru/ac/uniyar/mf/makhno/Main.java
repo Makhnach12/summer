@@ -132,7 +132,7 @@ public class Main {
         }
         System.out.println(arr.size());
         if (arr.contains(0)) {
-            System.out.println("ArrayList contains 0");
+            System.out.println("ArrayList contains 0/");
         } else
             System.out.println("ArrayList isn't contains 0");
     }
