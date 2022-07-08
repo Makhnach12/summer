@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import ru.ac.uniyar.mf.makhno.Node;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TreeTest {
@@ -41,10 +43,9 @@ public class TreeTest {
     void write_tree(){
         Node root1 = new Node("Корень");
         Node child1 = new Node("Лист1");
-        Node child2 = new Node("Лист2");
-        Node child3 = new Node("Лист3");
         root1.add(child1);
-        root1.add(child2);
-        child1.add(child3);
+        String actual = root1.toString();
+        String expected = "Корень\n\tЛист1\n";
+        assertEquals(expected, actual);
     }
 }

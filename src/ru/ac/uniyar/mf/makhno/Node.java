@@ -35,4 +35,37 @@ public class Node {
         if (idx != -1)
             children.remove(idx);
     }
+
+    private String toString(Node node, int space){
+        if (node == null)
+            return "";
+        StringBuilder result = new StringBuilder();
+        for (int i=0;i<space;i++){
+            result.append("\t");
+        }
+        result.append(node.name).append("\n");
+        if (node.children == null){
+            return result.toString();
+        }
+        for (Node child : node.children){
+            result.append(toString(child, space + 1));
+        }
+        return result.toString();
+    }
+
+    @Override
+    public String toString(){
+        return toString(this,0);
+    }
+
+    public void printTree(Node root, List<String> arr_1){
+        List<Node> arr = root.getChildren();
+        if (arr.size() == 0) {
+            arr_1.add((String)root.getName());
+            return;
+        }
+        for (int i=0;i<arr.size();i++){
+            printTree((Node) arr.get(i), arr_1);
+        }
+    }
 }
