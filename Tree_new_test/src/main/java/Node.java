@@ -1,5 +1,3 @@
-package ru.ac.uniyar.mf.makhno;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

@@ -2,12 +2,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.Test;
-import ru.ac.uniyar.mf.makhno.Node;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -95,5 +93,3 @@ public class TreeTest {
         assertEquals("Лист", actual.getChildren().get(0).getName());
     }
 }
-
-//home/user/Рабочий стол/gg/yy.txt
